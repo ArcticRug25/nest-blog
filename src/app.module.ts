@@ -1,3 +1,5 @@
+import { productionConfig } from './config/production.config'
+import { developmentConfig } from './config/development.config'
 import { Module } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
@@ -10,6 +12,12 @@ console.log(process.env.NODE_ENV)
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: 'ConfigService',
+      useValue: process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig,
+    },
+  ],
 })
 export class AppModule {}
