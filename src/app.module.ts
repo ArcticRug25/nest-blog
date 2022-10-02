@@ -5,13 +5,14 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { config } from 'dotenv'
 import { UploadModule } from './upload/upload.module'
+import { PModule } from './p/p.module';
 import path from 'path'
 config({
   path: path.join(__dirname, '../.env'),
 })
 console.log(process.env.NODE_ENV)
 @Module({
-  imports: [UploadModule],
+  imports: [UploadModule, PModule],
   controllers: [AppController],
   providers: [
     AppService,
