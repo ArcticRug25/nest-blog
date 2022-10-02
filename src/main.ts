@@ -1,3 +1,4 @@
+import { HttpFilter } from './common/filter'
 import { join } from 'path'
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
@@ -12,6 +13,8 @@ async function bootstrap() {
   })
 
   app.useGlobalInterceptors(new Response())
+
+  app.useGlobalFilters(new HttpFilter())
 
   await app.listen(3000)
 }
