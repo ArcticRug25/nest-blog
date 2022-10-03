@@ -1,12 +1,14 @@
 import { MailerModule, PugAdapter } from '@nest-modules/mailer'
 import { Module } from '@nestjs/common'
 import { config } from 'dotenv'
+import { StatusMonitorModule } from 'nest-status-monitor'
 import { ConfigModule, ConfigService } from 'nestjs-config'
 import path, { resolve } from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { developmentConfig } from './config/development.config'
 import { productionConfig } from './config/production.config'
+import statusMonitorConfig from './config/status-monitor'
 import { EmailModule } from './email/email.module'
 import { LoginModule } from './login/login.module'
 import { PModule } from './p/p.module'
@@ -19,6 +21,7 @@ console.log(process.env.NODE_ENV)
 @Module({
   imports: [
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
+    StatusMonitorModule.setUp(statusMonitorConfig),
     UploadModule,
     PModule,
     LoginModule,
