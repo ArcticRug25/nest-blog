@@ -9,11 +9,11 @@ export class EmailService {
 
   sendEmail() {
     this.mailerService.sendMail({
-      to: 'panxiaowh@163.com',
+      to: '475367459@qq.com',
       from: 'wyw82839148@163.com',
       subject: '测试测试',
-      html: '<b>皓皓<b>',
-      // template: '',
+      // html: '<b>皓皓<b>',
+      template: 'welcome',
     })
   }
 
