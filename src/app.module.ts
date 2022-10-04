@@ -14,10 +14,10 @@ import { LoginModule } from './login/login.module'
 import { PModule } from './p/p.module'
 import { RoleGuardModule } from './role-guard/role-guard.module'
 import { UploadModule } from './upload/upload.module'
+import { AuthModule } from './auth/auth.module'
 config({
   path: path.join(__dirname, '../.env'),
 })
-console.log(process.env.NODE_ENV)
 @Module({
   imports: [
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
@@ -31,6 +31,7 @@ console.log(process.env.NODE_ENV)
       useFactory: (config: ConfigService) => config.get('email'),
     }),
     EmailModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
