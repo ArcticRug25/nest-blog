@@ -17,10 +17,10 @@ export class EmailController {
     return this.emailService.sendEmail()
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.emailService.findOne(+id)
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.emailService.findOne(+id)
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEmailDto: UpdateEmailDto) {
