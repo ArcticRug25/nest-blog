@@ -14,7 +14,8 @@ import { LoginModule } from './login/login.module'
 import { PModule } from './p/p.module'
 import { RoleGuardModule } from './role-guard/role-guard.module'
 import { UploadModule } from './upload/upload.module'
-import { AuthModule } from './auth/auth.module'
+import { TasksModule } from './tasks/tasks.module'
+import { ScheduleModule } from '@nestjs/schedule'
 config({
   path: path.join(__dirname, '../.env'),
 })
@@ -31,7 +32,8 @@ config({
       useFactory: (config: ConfigService) => config.get('email'),
     }),
     EmailModule,
-    AuthModule,
+    ScheduleModule.forRoot(),
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [
