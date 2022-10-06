@@ -1,3 +1,4 @@
+// import { RoleGuard } from './guard/role.guard'
 import { HttpFilter } from './common/filter'
 import { join } from 'path'
 import { NestFactory } from '@nestjs/core'
@@ -18,6 +19,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpFilter())
 
   app.useGlobalPipes(new ValidationPipe())
+
+  // app.useGlobalGuards(new RoleGuard())
 
   await app.listen(3000)
 }
