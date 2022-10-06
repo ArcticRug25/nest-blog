@@ -16,6 +16,7 @@ import { RoleGuardModule } from './role-guard/role-guard.module'
 import { UploadModule } from './upload/upload.module'
 import { TasksModule } from './tasks/tasks.module'
 import { ScheduleModule } from '@nestjs/schedule'
+import { SpiderModule } from './spider/spider.module'
 config({
   path: path.join(__dirname, '../.env'),
 })
@@ -32,8 +33,9 @@ config({
       useFactory: (config: ConfigService) => config.get('email'),
     }),
     EmailModule,
-    ScheduleModule.forRoot(),
+    // ScheduleModule.forRoot(),
     TasksModule,
+    SpiderModule,
   ],
   controllers: [AppController],
   providers: [
