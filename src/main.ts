@@ -6,9 +6,22 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { AppModule } from './app.module'
 import { Response } from './common/response'
 import { ValidationPipe } from '@nestjs/common'
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
+
+  // swagger
+  const option = new DocumentBuilder()
+    .addBearerAuth()
+    .setTitle('api文档')
+    .setDescription('测试文档')
+    .setVersion('1')
+    .build()
+
+  const document = SwaggerModule.createDocument(app, option)
+
+  SwaggerModule.setup('/api-docs', app, document)
 
   app.useStaticAssets(join(__dirname, 'images'), {
     prefix: '/images',
