@@ -15,6 +15,10 @@ import { SpiderModule } from './spider/spider.module'
 import { TasksModule } from './tasks/tasks.module'
 import { UploadModule } from './upload/upload.module'
 import { MyConfigModule } from './my-config/my-config.module'
+import { ArticleModule } from './article/article.module'
+
+const configPath = path.resolve(__dirname, './config')
+
 config({
   path: path.join(__dirname, '../.env'),
 })
@@ -35,7 +39,8 @@ config({
     TasksModule,
     SpiderModule,
     GuardModule,
-    MyConfigModule,
+    MyConfigModule.forRoot({ path: configPath }),
+    ArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
