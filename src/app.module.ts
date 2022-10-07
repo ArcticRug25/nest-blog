@@ -6,8 +6,6 @@ import { ConfigModule, ConfigService } from 'nestjs-config'
 import path, { resolve } from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { developmentConfig } from './config/development.config'
-import { productionConfig } from './config/production.config'
 import statusMonitorConfig from './config/status-monitor'
 import { EmailModule } from './email/email.module'
 import { GuardModule } from './guard/guard.module'
@@ -16,6 +14,7 @@ import { PModule } from './p/p.module'
 import { SpiderModule } from './spider/spider.module'
 import { TasksModule } from './tasks/tasks.module'
 import { UploadModule } from './upload/upload.module'
+import { MyConfigModule } from './my-config/my-config.module'
 config({
   path: path.join(__dirname, '../.env'),
 })
@@ -36,14 +35,9 @@ config({
     TasksModule,
     SpiderModule,
     GuardModule,
+    MyConfigModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    {
-      provide: 'ConfigService',
-      useValue: process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig,
-    },
-  ],
+  providers: [AppService],
 })
 export class AppModule {}
