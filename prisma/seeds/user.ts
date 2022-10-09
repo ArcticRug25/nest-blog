@@ -2,8 +2,8 @@ import { create } from '../helper'
 import { Random } from 'mockjs'
 import { PrismaClient } from '@prisma/client'
 
-export async function user() {
-  return create(30, async (prisma: PrismaClient) => {
+export function user() {
+  create(30, async (prisma: PrismaClient) => {
     await prisma.user.create({
       data: {
         email: Random.email(),
@@ -13,4 +13,3 @@ export async function user() {
     })
   })
 }
-//a
