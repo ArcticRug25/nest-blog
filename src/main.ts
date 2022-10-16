@@ -30,11 +30,13 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new Response())
 
-  app.useGlobalFilters(new HttpFilter())
+  // app.useGlobalFilters(new HttpFilter())
 
   app.useGlobalPipes(new Validate())
 
   // app.useGlobalGuards(new RoleGuard())
+
+  app.setGlobalPrefix('api')
 
   await app.listen(3000)
 }

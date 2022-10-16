@@ -1,21 +1,10 @@
-import { MailerModule } from '@nest-modules/mailer'
 import { Module } from '@nestjs/common'
-import { config } from 'dotenv'
-import { StatusMonitorModule } from 'nest-status-monitor'
-import path, { resolve } from 'path'
-import { ArticleModule } from './article/article.module'
-import { AuthModule } from './auth/auth.module'
-import statusMonitorConfig from './config/status-monitor'
-import { EmailModule } from './email/email.module'
-import { GuardModule } from './guard/guard.module'
-import { LoginModule } from './login/login.module'
-import { MyConfigModule } from './my-config/my-config.module'
-import { PModule } from './p/p.module'
-import { SpiderModule } from './spider/spider.module'
-import { TasksModule } from './tasks/tasks.module'
-import { UploadModule } from './upload/upload.module'
-import { PrismaModule } from './prisma/prisma.module'
 import { ConfigModule } from '@nestjs/config'
+import { config } from 'dotenv'
+import path from 'path'
+import { AuthModule } from './auth/auth.module'
+import { PrismaModule } from './prisma/prisma.module'
+import { ArticleModule } from './article/article.module'
 
 const configPath = path.resolve(__dirname, './config')
 
@@ -37,9 +26,9 @@ config({
     // SpiderModule,
     // GuardModule,
     // MyConfigModule.forRoot({ path: configPath }),
-    // ArticleModule,
     AuthModule,
     PrismaModule,
+    ArticleModule,
   ],
 })
 export class AppModule {}
