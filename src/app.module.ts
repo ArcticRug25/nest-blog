@@ -5,6 +5,7 @@ import path from 'path'
 import { AuthModule } from './auth/auth.module'
 import { PrismaModule } from './prisma/prisma.module'
 import { ArticleModule } from './article/article.module'
+import { CategoryModule } from './category/category.module';
 
 const configPath = path.resolve(__dirname, './config')
 
@@ -29,6 +30,7 @@ config({
     AuthModule,
     PrismaModule,
     ArticleModule,
+    CategoryModule,
   ],
 })
 export class AppModule {}

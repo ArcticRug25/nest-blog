@@ -34,6 +34,7 @@ async function run() {
       data: {
         title: Random.ctitle(10, 30),
         content: Random.cparagraph(30, 50),
+        categoryId: _.random(1, 5),
       },
     })
   }
