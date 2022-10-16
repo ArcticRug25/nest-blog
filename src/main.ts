@@ -7,6 +7,7 @@ import { AppModule } from './app.module'
 import { Response } from './common/response'
 import { ValidationPipe } from '@nestjs/common'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
+import Validate from './common/validate/validate'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
@@ -31,7 +32,7 @@ async function bootstrap() {
 
   app.useGlobalFilters(new HttpFilter())
 
-  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalPipes(new Validate())
 
   // app.useGlobalGuards(new RoleGuard())
 
