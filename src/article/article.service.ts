@@ -11,6 +11,7 @@ export class ArticleService {
     return this.prisma.article.create({
       data: {
         ...createArticleDto,
+        categoryId: +createArticleDto.categoryId,
       },
     })
   }
