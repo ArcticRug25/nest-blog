@@ -45,7 +45,10 @@ export class ArticleService {
       where: {
         id,
       },
-      data: updateArticleDto,
+      data: {
+        ...updateArticleDto,
+        categoryId: updateArticleDto.categoryId,
+      },
     })
   }
 
