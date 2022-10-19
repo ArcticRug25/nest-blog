@@ -1,6 +1,6 @@
 // import { RoleGuard } from './guard/role.guard'
 import { HttpFilter } from './common/filter'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
 import { AppModule } from './app.module'
@@ -24,9 +24,9 @@ async function bootstrap() {
 
   SwaggerModule.setup('/api-docs', app, document)
 
-  app.useStaticAssets(join(__dirname, 'images'), {
-    prefix: '/images',
-  })
+  // app.useStaticAssets(join(__dirname, 'images'), {
+  //   prefix: '/images',
+  // })
 
   app.useGlobalInterceptors(new Response())
 
@@ -37,6 +37,7 @@ async function bootstrap() {
   // app.useGlobalGuards(new RoleGuard())
 
   app.setGlobalPrefix('api')
+  app.useStaticAssets(join(__dirname, 'images'), { prefix: '/uploads' })
 
   await app.listen(3000)
 }

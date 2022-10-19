@@ -1,15 +1,20 @@
 import { join } from 'path'
 import { Controller, Get, Post, UseInterceptors, UploadedFile, Res } from '@nestjs/common'
 import { UploadService } from './upload.service'
-import { CreateUploadDto } from './dto/create-upload.dto'
-import { UpdateUploadDto } from './dto/update-upload.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Response } from 'express'
 import { zip } from 'compressing'
+import { image } from './upload'
 
 @Controller('upload')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
+
+  @Post('image')
+  @image()
+  image(@UploadedFile() file: Express.Multer.File) {
+    return file
+  }
 
   @Post('album')
   @UseInterceptors(FileInterceptor('file'))
