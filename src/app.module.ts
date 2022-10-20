@@ -16,9 +16,7 @@ config({
 @Module({
   imports: [
     // ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
-    ConfigModule.forRoot({ isGlobal: true }),
     // StatusMonitorModule.setUp(statusMonitorConfig),
-    UploadModule,
     // PModule,
     // LoginModule,
     // RoleGuardModule,
@@ -28,6 +26,8 @@ config({
     // SpiderModule,
     // GuardModule,
     // MyConfigModule.forRoot({ path: configPath }),
+    ConfigModule.forRoot({ isGlobal: true }),
+    UploadModule,
     AuthModule,
     PrismaModule,
     ArticleModule,

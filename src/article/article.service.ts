@@ -20,6 +20,9 @@ export class ArticleService {
     const articles = await this.prisma.article.findMany({
       skip: (page - 1) * row,
       take: row,
+      include: {
+        category: true,
+      },
     })
 
     const total = await this.prisma.article.count()

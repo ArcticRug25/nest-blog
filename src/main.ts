@@ -24,10 +24,6 @@ async function bootstrap() {
 
   SwaggerModule.setup('/api-docs', app, document)
 
-  // app.useStaticAssets(join(__dirname, 'images'), {
-  //   prefix: '/images',
-  // })
-
   app.useGlobalInterceptors(new Response())
 
   // app.useGlobalFilters(new HttpFilter())
